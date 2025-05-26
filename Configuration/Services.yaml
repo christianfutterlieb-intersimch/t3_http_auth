@@ -1,0 +1,8 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  ChristianFutterlieb\T3HttpAuth\:
+    resource: '../Classes/*'

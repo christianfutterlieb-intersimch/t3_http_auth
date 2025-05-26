@@ -1,0 +1,8 @@
+# cat=basic/enable/001; type=boolean; label=Enable global access definitions:Configuration through TYPO3_CONF_VARS
+globalAccess = 1
+
+# cat=basic/enable/002; type=boolean; label=Enable site-based access definitions
+siteBasedAccess = 0
+
+# cat=basic/enable/003; type=boolean; label=Enable page-pased access definitions
+pageBasedAccess = 0

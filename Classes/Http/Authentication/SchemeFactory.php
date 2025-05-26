@@ -1,0 +1,31 @@
+<?php
+
+declare(strict_types=1);
+
+namespace ChristianFutterlieb\T3HttpAuth\Http\Authentication;
+
+/*
+ * Copyright by Christian Futterlieb
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
+ */
+
+use ChristianFutterlieb\T3HttpAuth\Http\Authentication\Scheme\Basic;
+use Psr\Http\Message\ServerRequestInterface;
+
+/**
+ * SchemeFactory
+ */
+class SchemeFactory implements SchemeFactoryInterface
+{
+    /**
+     * Note: Currently, only the Basic HTTP Authentication scheme is supported
+     */
+    public function createScheme(ServerRequestInterface $request): SchemeInterface
+    {
+        return new Basic();
+    }
+}

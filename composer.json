@@ -1,0 +1,75 @@
+{
+    "name": "christianfutterlieb/t3_http_auth",
+    "description": "HTTP Authentication for TYPO3",
+    "license": "GPL-2.0-or-later",
+    "type": "typo3-cms-extension",
+    "keywords": [
+        "typo3",
+        "http",
+        "authentication",
+        "auth",
+        "basic",
+        "username",
+        "password"
+    ],
+    "authors": [
+        {
+            "name": "Christian Futterlieb",
+            "homepage": "https://github.com/christianfutterlieb",
+            "role": "Developer"
+        }
+    ],
+    "homepage": "https://github.com/christianfutterlieb/t3_http_auth",
+    "support": {
+        "issues": "https://github.com/christianfutterlieb/t3_http_auth/issues",
+        "source": "https://github.com/christianfutterlieb/t3_http_auth.git",
+        "docs": "https://docs.typo3.org/p/christianfutterlieb/http_authentication/main/en-us/"
+    },
+    "require": {
+        "php": ">=8.1 <8.5",
+        "psr/http-message": "*",
+        "typo3/cms-backend": "^12.4 || ^13.4",
+        "typo3/cms-core": "^12.4 || ^13.4",
+        "typo3/cms-frontend": "^12.4 || ^13.4"
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.42",
+        "friendsofphp/php-cs-fixer": "^3.17",
+        "mikey179/vfsstream": "^1.6.7",
+        "phpstan/phpstan": "^1.10",
+        "rector/rector": "^1.0",
+        "typo3/testing-framework": "^8.0 || ^9.0"
+    },
+    "replace": {
+        "typo3-ter/t3_http_auth": "self.version"
+    },
+    "autoload": {
+        "psr-4": {
+            "ChristianFutterlieb\\T3HttpAuth\\": "Classes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ChristianFutterlieb\\T3HttpAuth\\Tests\\": "Tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true,
+            "typo3/class-alias-loader": true,
+            "typo3/cms-composer-installers": true
+        },
+        "bin-dir": ".Build/bin",
+        "sort-packages": true,
+        "vendor-dir": ".Build/vendor"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.x-dev"
+        },
+        "typo3/cms": {
+            "extension-key": "http_authentication",
+            "web-dir": ".Build/public"
+        }
+    }
+}
