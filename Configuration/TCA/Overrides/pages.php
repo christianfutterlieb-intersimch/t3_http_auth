@@ -1,6 +1,6 @@
 <?php
 
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+declare(strict_types=1);
 
 /*
  * Copyright by Christian Futterlieb
@@ -10,6 +10,11 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\Domain\Repository\PageRepository;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 $columns = [
     'tx_httpauthentication_access' => [
@@ -25,9 +30,18 @@ $columns = [
 ];
 
 ExtensionManagementUtility::addTCAcolumns('pages', $columns);
-ExtensionManagementUtility::addToAllTCAtypes('pages', '--palette--;;tx_httpauthentication_access','','after:editlock');
 
 $GLOBALS['TCA']['pages']['palettes']['tx_httpauthentication_access'] = [
     'label' => 'HTTP Authentication (LLL)',
     'showitem' => 'tx_httpauthentication_access',
 ];
+
+// Add the palette to the standard pages (if pageBasedAccess is enabled)
+if ((bool)GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('http_authentication', 'pageBasedAccess')) {
+    ExtensionManagementUtility::addToAllTCAtypes(
+        'pages',
+        '--palette--;;tx_httpauthentication_access',
+        (string)PageRepository::DOKTYPE_DEFAULT,
+        'after:editlock'
+    );
+}

@@ -28,9 +28,9 @@
     "require": {
         "php": ">=8.1 <8.5",
         "psr/http-message": "*",
-        "typo3/cms-backend": "^12.4 || ^13.4",
-        "typo3/cms-core": "^12.4 || ^13.4",
-        "typo3/cms-frontend": "^12.4 || ^13.4"
+        "typo3/cms-backend": "^11.5 || ^12.4 || ^13.4",
+        "typo3/cms-core": "^11.5 || ^12.4 || ^13.4",
+        "typo3/cms-frontend": "^11.5 || ^12.4 || ^13.4"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.42",
@@ -38,7 +38,7 @@
         "mikey179/vfsstream": "^1.6.7",
         "phpstan/phpstan": "^1.10",
         "rector/rector": "^1.0",
-        "typo3/testing-framework": "^8.0 || ^9.0"
+        "typo3/testing-framework": "^7.0 || ^8.0 || ^9.0"
     },
     "replace": {
         "typo3-ter/t3_http_auth": "self.version"

@@ -20,8 +20,8 @@ use ChristianFutterlieb\T3HttpAuth\Http\Middleware\HttpAuthenticationPage;
 use ChristianFutterlieb\T3HttpAuth\Http\Middleware\HttpAuthenticationSite;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Core\Routing\PageArguments;
 use TYPO3\CMS\Core\Site\Entity\Site;
-use TYPO3\CMS\Frontend\Page\PageInformation;
 
 /**
  * AccessSourceFactory
@@ -61,7 +61,7 @@ final class AccessSourceFactory implements AccessSourceFactoryInterface
     private function createAccessSourcePage(ServerRequestInterface $request): Page
     {
         return new Page(
-            $this->getPageInformationFromRequest($request)->getId()
+            $this->getPageArgumentsFromRequest($request)->getPageId()
         );
     }
 
@@ -71,9 +71,9 @@ final class AccessSourceFactory implements AccessSourceFactoryInterface
         return $request->getAttribute('site');
     }
 
-    private function getPageInformationFromRequest(ServerRequestInterface $request): PageInformation
+    private function getPageArgumentsFromRequest(ServerRequestInterface $request): PageArguments
     {
-        // This attribute is set in \TYPO3\CMS\Frontend\Middleware\TypoScriptFrontendInitialization
-        return $request->getAttribute('frontend.page.information');
+        // This attribute is set in \TYPO3\CMS\Frontend\Middleware\PageResolver
+        return $request->getAttribute('routing');
     }
 }
