@@ -20,6 +20,9 @@ final class Environment implements AccessSourceInterface
 {
     use AccessSourceTrait;
 
+    public const OFFSET_IDENTIFICATION = 'EXT_HTTP_AUTHENTICATION_ACCESS_USERNAME';
+    public const OFFSET_KEY = 'EXT_HTTP_AUTHENTICATION_ACCESS_PASSWORD';
+
     public function getDefinitions(): array
     {
         return $this->createDefinitionsArrayFromConfig(
@@ -31,19 +34,14 @@ final class Environment implements AccessSourceInterface
     {
         return [
             [
-                'username' => $this->getIdentificationFromEnv(),
-                'password' => $this->getKeyFromEnv(),
+                'username' => $this->getValueFromEnv(self::OFFSET_IDENTIFICATION),
+                'password' => $this->getValueFromEnv(self::OFFSET_KEY),
             ]
         ];
     }
 
-    private function getIdentificationFromEnv(): ?string
+    private function getValueFromEnv(string $offset): ?string
     {
-        return $_ENV['EXT_HTTP_AUTHENTICATION_ACCESS_USERNAME'] ?? $_SERVER['EXT_HTTP_AUTHENTICATION_ACCESS_USERNAME'] ?? null;
-    }
-
-    private function getKeyFromEnv(): ?string
-    {
-        return $_ENV['EXT_HTTP_AUTHENTICATION_ACCESS_PASSWORD'] ?? $_SERVER['EXT_HTTP_AUTHENTICATION_ACCESS_PASSWORD'] ?? null;
+        return $_ENV[$offset] ?? $_SERVER[$offset] ?? null;
     }
 }
