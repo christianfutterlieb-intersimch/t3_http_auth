@@ -34,9 +34,7 @@ abstract class AbstractHttpAuthentication implements MiddlewareInterface
         private readonly RequestMatcher $requestMatcher,
         private readonly AccessSourceFactoryInterface $accessSourceFactory,
         private readonly SchemeFactoryInterface $schemeFactory,
-    ) {
-        unset($_ENV['EXT_HTTP_AUTHENTICATION_ACCESS_USERNAME'], $_SERVER['EXT_HTTP_AUTHENTICATION_ACCESS_USERNAME'], $_ENV['EXT_HTTP_AUTHENTICATION_ACCESS_PASSWORD'], $_SERVER['EXT_HTTP_AUTHENTICATION_ACCESS_PASSWORD']);
-    }
+    ) {}
 
     final public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
