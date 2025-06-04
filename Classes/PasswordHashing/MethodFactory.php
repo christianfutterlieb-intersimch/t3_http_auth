@@ -50,22 +50,28 @@ class MethodFactory
         string $hash
     ): array {
         $return = [];
-
-        /** @var MethodInterface $method */
-        $method = GeneralUtility::makeInstance(Bcrypt::class);
-        if ($method->canHandleHash($hash)) {
-            $return[] = $method;
-        }
-
-        /** @var MethodInterface $method */
-        $method = GeneralUtility::makeInstance(Typo3PasswordHashing::class);
-        if ($method->canHandleHash($hash)) {
-            $return[] = $method;
+        foreach ($this->getAvailableMethodClassNames() as $methodClassName) {
+            /** @var MethodInterface $method */
+            $method = GeneralUtility::makeInstance($methodClassName);
+            if ($method->canHandleHash($hash)) {
+                $return[] = $method;
+            }
         }
 
         if ($return === []) {
             throw new \RuntimeException('Cannot find a password hashing method suited for the given hash');
         }
         return $return;
+    }
+
+    /**
+     * @return string[]
+     */
+    private function getAvailableMethodClassNames(): array
+    {
+        return [
+            Bcrypt::class,
+            Typo3PasswordHashing::class,
+        ];
     }
 }
