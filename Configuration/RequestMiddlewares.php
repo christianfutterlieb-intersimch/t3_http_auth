@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * Copyright by Christian Futterlieb
  *
@@ -19,10 +21,11 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /** @var ExtensionConfiguration $extConf */
 $extConf = GeneralUtility::makeInstance(ExtensionConfiguration::class);
 
-$middlewares = [
+return [
     'frontend' => [
         'christianfutterlieb/t3_http_auth/http-authentication-env' => [
             'target' => HttpAuthenticationEnv::class,
+            'disabled' => !(bool)$extConf->get('http_authentication', 'envAccess'),
             'before' => [
                 'typo3/cms-core/normalized-params-attribute',
             ],
@@ -30,45 +33,38 @@ $middlewares = [
                 'typo3/cms-frontend/timetracker',
             ],
         ],
+        'christianfutterlieb/t3_http_auth/http-authentication-global' => [
+            'target' => HttpAuthenticationGlobal::class,
+            'disabled' => !(bool)$extConf->get('http_authentication', 'globalAccess'),
+            'before' => [
+                'typo3/cms-core/normalized-params-attribute',
+            ],
+            'after' => [
+                'christianfutterlieb/t3_http_auth/http-authentication-env',
+            ],
+        ],
+        'christianfutterlieb/t3_http_auth/http-authentication-site' => [
+            'target' => HttpAuthenticationSite::class,
+            'disabled' => !(bool)$extConf->get('http_authentication', 'siteBasedAccess'),
+            'before' => [
+                'typo3/cms-frontend/base-redirect-resolver',
+                'typo3/cms-frontend/page-resolver',
+                'typo3/cms-frontend/page-argument-validator',
+                'typo3/cms-frontend/prepare-tsfe-rendering',
+            ],
+            'after' => [
+                'typo3/cms-frontend/site',
+            ],
+        ],
+        'christianfutterlieb/t3_http_auth/http-authentication-page' => [
+            'target' => HttpAuthenticationPage::class,
+            'disabled' => !(bool)$extConf->get('http_authentication', 'pageBasedAccess'),
+            'before' => [
+                'typo3/cms-frontend/prepare-tsfe-rendering',
+            ],
+            'after' => [
+                'typo3/cms-frontend/page-resolver',
+            ],
+        ],
     ],
 ];
-
-if ($extConf->get('http_authentication', 'globalAccess')) {
-    $middlewares['frontend']['christianfutterlieb/t3_http_auth/http-authentication-global'] = [
-        'target' => HttpAuthenticationGlobal::class,
-        'before' => $middlewares['frontend']['christianfutterlieb/t3_http_auth/http-authentication-env']['before'],
-        'after' => [
-            'christianfutterlieb/t3_http_auth/http-authentication-env',
-        ],
-    ];
-}
-
-if ($extConf->get('http_authentication', 'siteBasedAccess')) {
-    $middlewares['frontend']['christianfutterlieb/t3_http_auth/http-authentication-site'] = [
-        'target' => HttpAuthenticationSite::class,
-        'before' => [
-            'typo3/cms-frontend/base-redirect-resolver',
-            'typo3/cms-frontend/page-resolver',
-            'typo3/cms-frontend/page-argument-validator',
-            'typo3/cms-frontend/prepare-tsfe-rendering',
-        ],
-        'after' => [
-            'typo3/cms-frontend/site',
-        ],
-    ];
-}
-
-if ($extConf->get('http_authentication', 'pageBasedAccess')) {
-    $middlewares['frontend']['christianfutterlieb/t3_http_auth/http-authentication-page'] = [
-        'target' => HttpAuthenticationPage::class,
-        'before' => [
-            'typo3/cms-frontend/prepare-tsfe-rendering',
-        ],
-        'after' => [
-            'typo3/cms-frontend/site',
-            'typo3/cms-frontend/tsfe',
-        ],
-    ];
-}
-
-return $middlewares;

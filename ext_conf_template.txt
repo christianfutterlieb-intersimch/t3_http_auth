@@ -1,8 +1,11 @@
-# cat=basic/enable/001; type=boolean; label=Enable global access definitions:Configuration through TYPO3_CONF_VARS
-globalAccess = 1
+# cat=basic/enable/001; type=boolean; label=Enable global access definitions:Configuration through environment variables EXT_HTTP_AUTHENTICATION_ACCESS_USERNAME and EXT_HTTP_AUTHENTICATION_ACCESS_USERNAME
+envAccess = 0
 
-# cat=basic/enable/002; type=boolean; label=Enable site-based access definitions
+# cat=basic/enable/002; type=boolean; label=Enable global access definitions:Configuration through TYPO3_CONF_VARS
+globalAccess = 0
+
+# cat=basic/enable/003; type=boolean; label=Enable site-based access definitions
 siteBasedAccess = 0
 
-# cat=basic/enable/003; type=boolean; label=Enable page-pased access definitions
+# cat=basic/enable/004; type=boolean; label=Enable page-pased access definitions
 pageBasedAccess = 0
