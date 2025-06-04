@@ -6,3 +6,12 @@ services:
 
   ChristianFutterlieb\T3HttpAuth\:
     resource: '../Classes/*'
+
+  ChristianFutterlieb\T3HttpAuth\Hook\DataHandlerHook:
+    public: true
+
+  ChristianFutterlieb\T3HttpAuth\PasswordHashing\Method\Bcrypt:
+    public: true
+
+  ChristianFutterlieb\T3HttpAuth\PasswordHashing\Method\Typo3PasswordHashing:
+    public: true
