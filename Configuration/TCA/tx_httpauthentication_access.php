@@ -21,7 +21,9 @@ return [
         'sortby' => 'sorting',
         'default_sortby' => 'username',
         'rootLevel' => 0,
-        //'iconfile' => 'EXT:styleguide/Resources/Public/Icons/tx_styleguide.svg',
+        'typeicon_classes' => [
+            'default' => 'actions-lock',
+        ],
         'searchFields' => 'username,description',
         'enablecolumns' => [
             'disabled' => 'hidden',
