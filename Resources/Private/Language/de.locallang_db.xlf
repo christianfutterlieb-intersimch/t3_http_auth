@@ -15,10 +15,6 @@
                 <source>Password</source>
                 <target>Passwort</target>
             </trans-unit>
-            <trans-unit id="tca.tx_httpauthentication_access.description">
-                <source>Description/Notes</source>
-                <target>Beschreibung/Notizen</target>
-            </trans-unit>
             <trans-unit id="tca.pages.palettes.tx_httpauthentication_access">
                 <source>HTTP Authentication</source>
                 <target>HTTP Au­then­ti­fi­zie­rung</target>

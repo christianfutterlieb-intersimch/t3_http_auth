@@ -19,8 +19,8 @@ return [
         'crdate' => 'crdate',
         'delete' => 'deleted',
         'sortby' => 'sorting',
+        'editlock' => 'editlock',
         'default_sortby' => 'username',
-        'rootLevel' => 0,
         'typeicon_classes' => [
             'default' => 'actions-lock',
         ],
@@ -29,7 +29,6 @@ return [
             'disabled' => 'hidden',
             'starttime' => 'starttime',
             'endtime' => 'endtime',
-            'editlock' => 'editlock',
         ],
         'security' => [
             'ignorePageTypeRestriction' => true,
@@ -37,47 +36,6 @@ return [
         'hideTable' => true,
     ],
     'columns' => [
-        'hidden' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.enabled',
-            'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
-                'items' => [
-                    [
-                        'label' => '',
-                        'invertStateDisplay' => true,
-                    ],
-                ],
-            ],
-        ],
-        'starttime' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
-            'config' => [
-                'type' => 'datetime',
-                'default' => 0,
-            ],
-        ],
-        'endtime' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
-            'config' => [
-                'type' => 'datetime',
-                'default' => 0,
-                'range' => [
-                    'upper' => mktime(0, 0, 0, 1, 1, 2038),
-                ],
-            ],
-        ],
-        'editlock' => [
-            'displayCond' => 'HIDE_FOR_NON_ADMINS',
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:editlock',
-            'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
-            ],
-        ],
         'username' => [
             'label' => 'LLL:EXT:http_authentication/Resources/Private/Language/locallang_db.xlf:tca.tx_httpauthentication_access.username',
             'config' => [
@@ -99,14 +57,6 @@ return [
                         'renderType' => 'passwordGenerator',
                     ],
                 ],
-            ],
-        ],
-        'description' => [
-            'label' => 'LLL:EXT:http_authentication/Resources/Private/Language/locallang_db.xlf:tca.tx_httpauthentication_access.description',
-            'config' => [
-                'type' => 'text',
-                'default' => null,
-                'nullable' => true,
             ],
         ],
     ],
