@@ -13,5 +13,5 @@ pageBasedAccess = 0
 # cat=basic/enable/005; type=options[TYPO3 Password Hashing (very secure/very slow)=typo3, Bcrypt compatible with htpasswd (secure/slow)=bcrypt, Apache-style MD5 salted hashing NOT YET IMPLEMENTED (insecure/fast)=apr1]; label=Password hashing API
 passwordHashingInDatabase = bcrypt
 
-# cat=basic/enable/006; type=int[4-17]; label=Bcrypt computing cost:Higher is more secure but slower, default: 5, valid: 4 to 17
+# cat=basic/enable/006; type=int[4-17]; label=Bcrypt computing cost:Higher is more secure but slower, default: 8, valid: 4 to 17
 passwordHashingBcryptCost = 8
