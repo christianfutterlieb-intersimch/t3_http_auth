@@ -17,7 +17,7 @@ use ChristianFutterlieb\T3HttpAuth\PasswordHashing\MethodFactory;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 
 /**
- * AccessSourceObjectCreatedEvent
+ * DataHandlerHook
  */
 final class DataHandlerHook
 {
@@ -34,6 +34,9 @@ final class DataHandlerHook
         if ($table !== 'tx_httpauthentication_access') {
             return;
         }
+
+        // Changes to tx_httpauthentication_access can change the icon overlay of the page
+        $dataHandler->pagetreeNeedsRefresh = true;
 
         // Password is not touched (or set to null): ignore
         if (!array_key_exists('password', $incomingFieldArray) || $incomingFieldArray['password'] === null) {

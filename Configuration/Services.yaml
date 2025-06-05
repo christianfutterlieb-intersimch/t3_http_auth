@@ -7,7 +7,14 @@ services:
   ChristianFutterlieb\T3HttpAuth\:
     resource: '../Classes/*'
 
+  ChristianFutterlieb\T3HttpAuth\EventListener\ModifyRecordOverlayIconIdentifierEventListener:
+    tags:
+      - name: 'event.listener'
+
   ChristianFutterlieb\T3HttpAuth\Hook\DataHandlerHook:
+    public: true
+
+  ChristianFutterlieb\T3HttpAuth\Hook\IconFactoryHook:
     public: true
 
   ChristianFutterlieb\T3HttpAuth\PasswordHashing\Method\Bcrypt:
