@@ -11,7 +11,7 @@
 
 return [
     'ctrl' => [
-        'title' => 'HTTP Authentication - Access',
+        'title' => 'LLL:EXT:http_authentication/Resources/Private/Language/locallang_db.xlf:tca.tx_httpauthentication_access',
         'label' => 'username',
         'label_alt' => 'description',
         'descriptionColumn' => 'description',
@@ -77,7 +77,7 @@ return [
             ],
         ],
         'username' => [
-            'label' => 'username (LLL)',
+            'label' => 'LLL:EXT:http_authentication/Resources/Private/Language/locallang_db.xlf:tca.tx_httpauthentication_access.username',
             'config' => [
                 'type' => 'input',
                 'default' => null,
@@ -87,7 +87,7 @@ return [
             ],
         ],
         'password' => [
-            'label' => 'password (LLL)',
+            'label' => 'LLL:EXT:http_authentication/Resources/Private/Language/locallang_db.xlf:tca.tx_httpauthentication_access.password',
             'config' => [
                 'type' => 'password',
                 'default' => null,
@@ -100,7 +100,7 @@ return [
             ],
         ],
         'description' => [
-            'label' => 'description (LLL)',
+            'label' => 'LLL:EXT:http_authentication/Resources/Private/Language/locallang_db.xlf:tca.tx_httpauthentication_access.description',
             'config' => [
                 'type' => 'text',
                 'default' => null,

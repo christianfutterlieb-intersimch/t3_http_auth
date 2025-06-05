@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0" xmlns:t3="http://typo3.org/schemas/xliff">
+    <file source-language="en" datatype="plaintext" original="messages" date="2025-06-05T21:57:00Z" product-name="http_authentication">
+        <header/>
+        <body>
+            <trans-unit id="tca.tx_httpauthentication_access">
+                <source>HTTP Authentication - Access definition</source>
+                <target>HTTP Au­then­ti­fi­zie­rung - Zugriff-Definition</target>
+            </trans-unit>
+            <trans-unit id="tca.tx_httpauthentication_access.username">
+                <source>Username</source>
+                <target>Benutzername</target>
+            </trans-unit>
+            <trans-unit id="tca.tx_httpauthentication_access.password">
+                <source>Password</source>
+                <target>Passwort</target>
+            </trans-unit>
+            <trans-unit id="tca.tx_httpauthentication_access.description">
+                <source>Description/Notes</source>
+                <target>Beschreibung/Notizen</target>
+            </trans-unit>
+            <trans-unit id="tca.pages.palettes.tx_httpauthentication_access">
+                <source>HTTP Authentication</source>
+                <target>HTTP Au­then­ti­fi­zie­rung</target>
+            </trans-unit>
+            <trans-unit id="tca.pages.tx_httpauthentication_access">
+                <source>Access definition</source>
+                <target>Zugriff-Definition</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

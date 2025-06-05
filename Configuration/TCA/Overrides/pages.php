@@ -20,7 +20,7 @@ $columns = [
     'tx_httpauthentication_access' => [
         'exclude' => true,
         'l10n_mode' => 'exclude',
-        'label' => 'Access definition (LLL)',
+        'label' => 'LLL:EXT:http_authentication/Resources/Private/Language/locallang_db.xlf:tca.pages.tx_httpauthentication_access',
         'config' => [
             'type' => 'inline',
             'foreign_table' => 'tx_httpauthentication_access',
@@ -32,7 +32,7 @@ $columns = [
 ExtensionManagementUtility::addTCAcolumns('pages', $columns);
 
 $GLOBALS['TCA']['pages']['palettes']['tx_httpauthentication_access'] = [
-    'label' => 'HTTP Authentication (LLL)',
+    'label' => 'LLL:EXT:http_authentication/Resources/Private/Language/locallang_db.xlf:tca.pages.palettes.tx_httpauthentication_access',
     'showitem' => 'tx_httpauthentication_access',
 ];
 
