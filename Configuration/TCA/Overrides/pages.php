@@ -25,6 +25,9 @@ $columns = [
             'type' => 'inline',
             'foreign_table' => 'tx_httpauthentication_access',
             'foreign_field' => 'pid',
+            'appearance' => [
+                'useSortable' => true,
+            ],
         ],
     ],
 ];
