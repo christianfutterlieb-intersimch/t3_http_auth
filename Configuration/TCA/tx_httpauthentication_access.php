@@ -52,6 +52,8 @@ return [
                 'type' => 'password',
                 'default' => null,
                 'nullable' => true,
+                // Do not let TYPO3 do the hashing: it is done in DataHandlerHook, dependent on the configured hashing method
+                'hashed' => false,
                 'fieldControl' => [
                     'passwordGenerator' => [
                         'renderType' => 'passwordGenerator',
